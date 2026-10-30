@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="en" class="no-js" data-theme="night">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Airwise HVAC Solutions | AC Installs, Retrofits, New Construction, Painting &amp; Maintenance</title>
+<meta name="description" content="Airwise HVAC Solutions: HVAC installations, retrofits, new construction, paint jobs and maintenance across Greater Sacramento. Upfront written quotes. Call (916) 475-3948.">
+<meta name="theme-color" content="#050A14">
+<meta property="og:title" content="Airwise HVAC Solutions: Stop sweating your HVAC.">
+<meta property="og:description" content="Installs, retrofits, new construction, painting & maintenance. Upfront pricing, clean installs, zero guesswork.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<script>document.documentElement.classList.replace('no-js','js');</script>
+<script>
+  /* Apply the visitor's saved color theme before first paint (no flash).
+     Themes: night = Arctic Night (default) · breeze = Summer Breeze · gold = Obsidian Gold.
+     Change the default by editing data-theme on the <html> tag above. Demo link: index.html?theme=gold */
+  (function () {
+    var ok = { night: 1, breeze: 1, gold: 1 }, t = null, d = document.documentElement;
+    try { var q = new URLSearchParams(location.search).get('theme'); if (q && ok[q]) { t = q; localStorage.setItem('airwise-theme', q); } } catch (e) {}
+    if (!t) { try { t = localStorage.getItem('airwise-theme'); } catch (e) {} }
+    if (!t || !ok[t]) t = d.getAttribute('data-theme') || 'night';
+    d.setAttribute('data-theme', t);
+    var mt = document.querySelector('meta[name=theme-color]');
+    if (mt) mt.setAttribute('content', { night: '#050A14', breeze: '#F5F9FF', gold: '#0A0908' }[t]);
+  })();
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+<!-- Library CDNs -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://esm.sh" crossorigin>
+<link rel="preconnect" href="https://api.pexels.com" crossorigin>
+
+<link rel="stylesheet" href="assets/css/style.css">
+
+<!-- ES module map for Three.js + React Three Fiber (loaded on demand by assets/js/scene3d.js) -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
+    "react": "https://esm.sh/react@18.3.1",
+    "react-dom": "https://esm.sh/react-dom@18.3.1?external=react",
+    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client?external=react",
+    "@react-three/fiber": "https://esm.sh/@react-three/fiber@8.17.10?external=react,react-dom,three"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HVACBusiness",
+  "name": "Airwise HVAC Solutions LLC",
+  "telephone": "+1-916-475-3948",
+  "email": "airwisehvacsolutionsllc@gmail.com",
+  "areaServed": "Greater Sacramento, CA",
+  "makesOffer": [
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "HVAC Installation"}},
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "HVAC Retrofit"}},
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "New Construction HVAC"}},
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Painting"}},
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "HVAC Maintenance"}}
+  ]
+}
+</script>
+</head>
+
+<body>
+<!-- ============ SVG ICON SPRITE ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color: var(--logo-a)"/><stop offset="1" style="stop-color: var(--logo-b)"/></linearGradient>
+  </defs>
+  <symbol id="i-logo" viewBox="0 0 40 40"><rect width="40" height="40" rx="11" fill="url(#g-brand)"/><path d="M11 29 20 10l9 19" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 22.5c2.2-1.6 4.3-1.6 6.5 0s4.3 1.6 6.5 0" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2.8 2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z" fill="currentColor"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-cube" viewBox="0 0 24 24"><path d="M12 2.5 20.5 7v10L12 21.5 3.5 17V7z M3.5 7 12 11.5 20.5 7 M12 11.5v10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-vr" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-4l-2-3h-2l-2 3H5a2 2 0 0 1-2-2z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="8" cy="11.5" r="1.6" fill="currentColor"/><circle cx="16" cy="11.5" r="1.6" fill="currentColor"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4.5 6v6c0 4.6 3.2 7.9 7.5 9 4.3-1.1 7.5-4.4 7.5-9V6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m8.5 12 2.4 2.4 4.6-4.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 2v20M3.3 7l17.4 10M3.3 17 20.7 7M9 4l3 2 3-2M9 20l3-2 3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-fan" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2" fill="currentColor"/><path d="M12 10c-1-4 0-7 3-7 2.5 0 2.5 4-3 7zm2 2c4-1 7 0 7 3 0 2.5-4 2.5-7-3zm-2 2c1 4 0 7-3 7-2.5 0-2.5-4 3-7zm-2-2c-4 1-7 0-7-3 0-2.5 4-2.5 7 3z" fill="currentColor"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></symbol>
+</svg>
+
+<!-- ============ PRELOADER ============ -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader__inner">
+    <svg class="preloader__logo"><use href="#i-logo"/></svg>
+    <div class="preloader__count"><span id="pre-count">0</span><small>%</small></div>
+    <p class="preloader__msg">Calibrating airflow…</p>
+    <div class="preloader__bar"><span id="pre-bar"></span></div>
+  </div>
+</div>
+
+<!-- Cursor + progress -->
+<div class="cursor" aria-hidden="true"><div class="cursor__dot"></div><div class="cursor__ring"><span class="cursor__label"></span></div></div>
+<div class="scroll-progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="nav__inner container">
+    <a class="brand" href="#top" aria-label="Airwise HVAC Solutions home">
+      <svg class="brand__logo"><use href="#i-logo"/></svg>
+      <span class="brand__text">Airwise<small>HVAC Solutions</small></span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#inside">Inside</a>
+      <a href="#process">Process</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">FAQ</a>
+    </nav>
+    <div class="nav__actions">
+      <span class="open-badge" data-open-badge hidden><i></i><span>Open now</span></span>
+      <a class="nav__phone" href="tel:+19164753948" data-tel><svg><use href="#i-phone"/></svg><span data-phone-display>(916) 475-3948</span></a>
+      <a class="btn btn--primary btn--sm" href="#quote" data-magnetic>Free estimate</a>
+      <button class="nav__burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div class="menu" id="menu" aria-hidden="true" data-lenis-prevent>
+  <nav class="menu__links" aria-label="Mobile">
+    <a href="#services"><small>01</small>Services</a>
+    <a href="#inside"><small>02</small>Inside the unit</a>
+    <a href="#process"><small>03</small>How it works</a>
+    <a href="#reviews"><small>04</small>Reviews</a>
+    <a href="#offer"><small>05</small>Seasonal offer</a>
+    <a href="#contact"><small>06</small>FAQ &amp; contact</a>
+  </nav>
+  <div class="menu__foot">
+    <a class="btn btn--primary btn--block" href="#quote">Get my free estimate</a>
+    <a class="menu__contact" href="tel:+19164753948" data-tel><svg><use href="#i-phone"/></svg><span data-phone-display>(916) 475-3948</span></a>
+    <a class="menu__contact" href="mailto:airwisehvacsolutionsllc@gmail.com" data-mail><svg><use href="#i-mail"/></svg><span data-email-display>airwisehvacsolutionsllc@gmail.com</span></a>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ============ 1. HERO ============ -->
+<section class="panel hero" id="top" data-section="Home">
+  <div class="hero__media" aria-hidden="true">
+    <video class="hero__video hero__video--desktop" data-media="heroDesktop" data-when="desktop" muted loop playsinline autoplay preload="none"></video>
+    <video class="hero__video hero__video--mobile" data-media="heroMobile" data-when="mobile" muted loop playsinline autoplay preload="none"></video>
+    <div class="hero__tint"></div>
+    <div class="hero__heat"></div>
+    <div class="grain"></div>
+  </div>
+  <div class="hero__canvas" id="hero-canvas" aria-hidden="true"></div>
+
+  <div class="dial" id="dial" aria-hidden="true" data-cursor="Drag">
+    <div class="dial__ring"></div>
+    <div class="dial__readout">
+      <span class="dial__temp"><span id="dial-temp">84</span><sup>°F</sup></span>
+      <span class="dial__state" id="dial-state">Too hot</span>
+    </div>
+    <span class="dial__hint">Drag the dial</span>
+  </div>
+
+  <div class="container hero__content">
+    <p class="eyebrow hero__eyebrow"><span class="pulse"></span><span data-area-line>HVAC pros · Greater Sacramento</span></p>
+    <h1 class="hero__title">
+      <span class="line"><span class="line__inner">Stop <em class="heat-word">sweating</em></span></span>
+      <span class="line"><span class="line__inner">your HVAC.</span></span>
+    </h1>
+    <p class="hero__sub">Installs, retrofits, new construction, painting and maintenance, all done right the first time. Upfront pricing. Clean installs. Zero guesswork.</p>
+    <div class="hero__ctas">
+      <a class="btn btn--primary btn--lg" href="#quote" data-magnetic>Get my free estimate <svg><use href="#i-arrow"/></svg></a>
+      <a class="btn btn--ghost btn--lg" href="tel:+19164753948" data-tel><svg><use href="#i-phone"/></svg><span data-phone-display>(916) 475-3948</span></a>
+    </div>
+    <div class="thermo">
+      <label for="temp-range"><svg><use href="#i-snow"/></svg> Set your comfort</label>
+      <input type="range" id="temp-range" min="64" max="86" step="1" value="84" aria-valuetext="84 degrees">
+      <output id="temp-out" for="temp-range">84°</output>
+    </div>
+    <ul class="hero__trust">
+      <li><svg><use href="#i-check"/></svg>Upfront written quotes</li>
+      <li><svg><use href="#i-check"/></svg>Same-week scheduling</li>
+      <li><svg><use href="#i-check"/></svg>Clean-site promise</li>
+    </ul>
+  </div>
+  <a class="scroll-cue" href="#cost" aria-label="Scroll to next section"><span></span>Scroll</a>
+</section>
+
+<!-- Marquee divider -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>Installations</span><i>✦</i><span>Retrofits</span><i>✦</i><span>New Construction</span><i>✦</i><span>Paint Jobs</span><i>✦</i><span>Maintenance</span><i>✦</i>
+    <span>Installations</span><i>✦</i><span>Retrofits</span><i>✦</i><span>New Construction</span><i>✦</i><span>Paint Jobs</span><i>✦</i><span>Maintenance</span><i>✦</i>
+  </div>
+</div>
+
+<!-- ============ 2. HIDDEN COST (loss aversion) ============ -->
+<section class="panel cost" id="cost" data-section="Savings">
+  <div class="container cost__grid">
+    <div class="cost__copy">
+      <p class="eyebrow" data-reveal>The hidden cost</p>
+      <h2 class="h2" data-split>Old systems don't just break. They <span class="warm">bleed money</span> first.</h2>
+      <p class="lead" data-reveal>Move the sliders to see what your current setup is likely costing you every year.</p>
+      <div class="calc" data-reveal>
+        <div class="calc__row">
+          <label for="age">System age <output id="age-out">12 yrs</output></label>
+          <input type="range" id="age" min="1" max="25" step="1" value="12">
+        </div>
+        <div class="calc__row">
+          <label for="bill">Avg. monthly energy bill <output id="bill-out">$220</output></label>
+          <input type="range" id="bill" min="60" max="600" step="10" value="220">
+        </div>
+      </div>
+      <div class="cost__cta" data-reveal>
+        <a class="btn btn--warm" href="#quote" data-prefill="Maintenance / tune-up" data-magnetic>Plug the leak: free efficiency check <svg><use href="#i-arrow"/></svg></a>
+      </div>
+      <p class="fineprint" data-reveal>Estimate only. Assumes heating &amp; cooling ≈ half your energy bill and efficiency loss that grows with age. Real numbers vary, and we'll measure yours for free.</p>
+    </div>
+    <div class="cost__viz" data-reveal>
+      <div class="gauge" id="gauge">
+        <svg viewBox="0 0 220 220" aria-hidden="true">
+          <defs><linearGradient id="g-gauge" x1="0" y1="1" x2="1" y2="0"><stop offset="0" style="stop-color: var(--amber)"/><stop offset="1" style="stop-color: var(--hot)"/></linearGradient></defs>
+          <circle class="gauge__track" cx="110" cy="110" r="92"/>
+          <circle class="gauge__fill" id="gauge-fill" cx="110" cy="110" r="92"/>
+        </svg>
+        <div class="gauge__center">
+          <span class="gauge__label">Likely wasted / year</span>
+          <strong class="gauge__value">$<span id="waste">0</span></strong>
+          <span class="gauge__pct"><span id="waste-pct">0</span>% efficiency lost</span>
+        </div>
+      </div>
+      <div class="leak">
+        <p>That's like paying for <strong><span id="waste-months">0</span> month(s)</strong> of energy you never get to feel.</p>
+        <div class="leak__bar"><span id="leak-fill"></span></div>
+        <div class="leak__legend"><span>Efficient</span><span>Leaking</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. INSIDE THE UNIT (pinned 3D scroll story) ============ -->
+<section class="panel inside" id="inside" data-section="Inside">
+  <div class="inside__stage" aria-hidden="true">
+    <div class="inside__fallback">
+      <svg viewBox="0 0 200 200" aria-hidden="true"><rect x="40" y="58" width="120" height="104" rx="8" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="100" cy="58" r="34" fill="none" stroke="currentColor" stroke-width="3"/><path d="M48 80h104M48 96h104M48 112h104M48 128h104M48 144h104" stroke="currentColor" stroke-width="2" opacity=".5"/></svg>
+    </div>
+    <div class="inside__canvas" id="unit-canvas"></div>
+  </div>
+  <div class="inside__glow" aria-hidden="true"></div>
+  <div class="container inside__grid">
+    <div class="inside__copy">
+      <p class="eyebrow" data-reveal>Inside an Airwise install</p>
+      <h2 class="h2" data-split>Every part sized, sealed <span class="cool">&amp; tested.</span></h2>
+      <ol class="steps" id="unit-steps">
+        <li class="step is-active" data-step="0">
+          <span class="step__num">01</span>
+          <div><h3>Whisper-quiet fan</h3><p>Balanced blades and a matched motor move more air with less noise and less power.</p></div>
+        </li>
+        <li class="step" data-step="1">
+          <span class="step__num">02</span>
+          <div><h3>High-efficiency coil</h3><p>Clean, straight fins shed heat fast, so your system runs shorter, cheaper cycles.</p></div>
+        </li>
+        <li class="step" data-step="2">
+          <span class="step__num">03</span>
+          <div><h3>Right-sized compressor</h3><p>A room-by-room load calculation means you never pay for a unit that's too big or too small.</p></div>
+        </li>
+        <li class="step" data-step="3">
+          <span class="step__num">04</span>
+          <div><h3>Sealed &amp; commissioned</h3><p>Pressure-tested, vacuumed, charged to spec and documented before we leave.</p></div>
+        </li>
+      </ol>
+      <div class="inside__progress" aria-hidden="true"><span id="inside-bar"></span></div>
+      <p class="inside__hint" aria-hidden="true"><svg><use href="#i-fan"/></svg>Keep scrolling to take it apart</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. SERVICES (horizontal track + pop-ups) ============ -->
+<section class="panel services" id="services" data-section="Services">
+  <div class="container services__head">
+    <div>
+      <p class="eyebrow" data-reveal>What we do</p>
+      <h2 class="h2" data-split>Five services. <span class="cool">One crew</span> that owns the result.</h2>
+    </div>
+    <div class="services__nav">
+      <p class="services__hint">Swipe or scroll</p>
+      <button class="icon-btn" data-svc-prev aria-label="Previous service"><svg><use href="#i-left"/></svg></button>
+      <button class="icon-btn" data-svc-next aria-label="Next service"><svg><use href="#i-right"/></svg></button>
+    </div>
+  </div>
+  <div class="services__viewport">
+    <div class="services__track" id="services-track">
+      <article class="svc" data-svc="install" data-cursor="Open">
+        <div class="svc__media"><img data-media="svcInstall" alt="HVAC technician installing a new system" loading="lazy" decoding="async"></div>
+        <div class="svc__body">
+          <span class="svc__num">01</span>
+          <h3>Installations</h3>
+          <p>AC, heat pumps, furnaces &amp; ductless mini-splits, sized by load calc and installed clean.</p>
+          <button class="svc__more" data-open-svc="install">Explore <svg><use href="#i-arrow"/></svg></button>
+        </div>
+      </article>
+      <article class="svc" data-svc="retrofit" data-cursor="Open">
+        <div class="svc__media"><img data-media="svcRetrofit" alt="Outdoor air conditioning unit beside a building" loading="lazy" decoding="async"></div>
+        <div class="svc__body">
+          <span class="svc__num">02</span>
+          <h3>Retrofits</h3>
+          <p>Upgrade aging systems to high-efficiency without tearing your home apart.</p>
+          <button class="svc__more" data-open-svc="retrofit">Explore <svg><use href="#i-arrow"/></svg></button>
+        </div>
+      </article>
+      <article class="svc" data-svc="construction" data-cursor="Open">
+        <div class="svc__media"><video data-media="svcConstruction" muted loop playsinline preload="none"></video><span class="svc__badge"><svg><use href="#i-play"/></svg>Video</span></div>
+        <div class="svc__body">
+          <span class="svc__num">03</span>
+          <h3>New Construction</h3>
+          <p>Design-build HVAC for builders &amp; custom homes, from rough-in to final.</p>
+          <button class="svc__more" data-open-svc="construction">Explore <svg><use href="#i-arrow"/></svg></button>
+        </div>
+      </article>
+      <article class="svc" data-svc="paint" data-cursor="Open">
+        <div class="svc__media"><video data-media="svcPaint" muted loop playsinline preload="none"></video><span class="svc__badge"><svg><use href="#i-play"/></svg>Video</span></div>
+        <div class="svc__body">
+          <span class="svc__num">04</span>
+          <h3>Paint Jobs</h3>
+          <p>Interior, exterior &amp; protective coatings. One crew, one invoice.</p>
+          <button class="svc__more" data-open-svc="paint">Explore <svg><use href="#i-arrow"/></svg></button>
+        </div>
+      </article>
+      <article class="svc" data-svc="maintenance" data-cursor="Open">
+        <div class="svc__media"><img data-media="svcMaintenance" alt="Technician servicing an air conditioner" loading="lazy" decoding="async"></div>
+        <div class="svc__body">
+          <span class="svc__num">05</span>
+          <h3>Maintenance</h3>
+          <p>Seasonal tune-ups that stop small problems becoming 2&nbsp;a.m. emergencies.</p>
+          <button class="svc__more" data-open-svc="maintenance">Explore <svg><use href="#i-arrow"/></svg></button>
+        </div>
+      </article>
+      <article class="svc svc--config" data-cursor="Build">
+        <div class="svc__config-art" aria-hidden="true">
+          <svg class="svc__cube"><use href="#i-cube"/></svg>
+          <span class="svc__orbit"></span><span class="svc__orbit svc__orbit--2"></span>
+        </div>
+        <div class="svc__body">
+          <span class="svc__num">3D</span>
+          <h3>Design your unit</h3>
+          <p>Pick a size and a finish color, spin it in 3D, then send your build for a quote.</p>
+          <button class="btn btn--primary btn--sm" data-open-config>Launch 3D studio <svg><use href="#i-cube"/></svg></button>
+        </div>
+      </article>
+    </div>
+  </div>
+  <div class="services__dots" id="services-dots" aria-hidden="true"></div>
+</section>
+
+<!-- ============ 5. PROCESS ============ -->
+<section class="panel process" id="process" data-section="Process">
+  <div class="container process__grid">
+    <div class="process__copy">
+      <p class="eyebrow" data-reveal>How it works</p>
+      <h2 class="h2" data-split>Four steps. <span class="cool">Zero surprises.</span></h2>
+      <ol class="timeline" id="timeline">
+        <svg class="timeline__line" viewBox="0 0 4 100" preserveAspectRatio="none" aria-hidden="true"><path id="timeline-path" d="M2 0V100" pathLength="1"/></svg>
+        <li class="tl" data-tl><span class="tl__dot">1</span><div><h3>Tell us what's up</h3><p>A 60-second form, a call or a text. A real person replies fast.</p></div></li>
+        <li class="tl" data-tl><span class="tl__dot">2</span><div><h3>Free on-site assessment</h3><p>Measurements, load calc and <strong>good / better / best</strong> options in writing.</p></div></li>
+        <li class="tl" data-tl><span class="tl__dot">3</span><div><h3>Install day</h3><p>On time, floors protected, debris gone. You barely know we were there.</p></div></li>
+        <li class="tl" data-tl><span class="tl__dot">4</span><div><h3>Walkthrough &amp; care</h3><p>We show you everything, register your warranty and remind you before tune-ups.</p></div></li>
+      </ol>
+    </div>
+    <div class="process__media" data-reveal>
+      <video data-media="processVideo" muted loop playsinline preload="none"></video>
+      <div class="process__shade"></div>
+      <div class="process__badge"><svg><use href="#i-shield"/></svg><div><strong>Clean-site promise</strong><span>We leave it cleaner than we found it.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. BEFORE / AFTER (contrast effect) ============ -->
+<section class="panel compare" id="compare" data-section="Results">
+  <div class="container compare__grid">
+    <div class="compare__copy">
+      <p class="eyebrow" data-reveal>Feel the difference</p>
+      <h2 class="h2" data-split>Same home. A completely <span class="cool">different summer.</span></h2>
+      <p class="lead" data-reveal>Drag the handle. On the left, a tired system fighting the Valley heat. On the right, the same room after a right-sized Airwise install.</p>
+      <ul class="compare__list" data-reveal>
+        <li><span class="warm">84°F</span> → <span class="cool">72°F</span> without the unit running all day</li>
+        <li>Filtered, de-humidified air that doesn't feel sticky</li>
+        <li>Quieter cycles, lower bills, fewer surprises</li>
+      </ul>
+      <a class="btn btn--primary" href="#quote" data-magnetic>I want the cool side <svg><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="ba" id="ba" style="--pos:50%" data-reveal data-cursor="Drag">
+      <div class="ba__layer ba__layer--after">
+        <img data-media="comfortRoom" alt="Bright, comfortable living room" loading="lazy" decoding="async">
+        <div class="ba__cool"></div>
+        <ul class="ba__chips ba__chips--after"><li><svg><use href="#i-snow"/></svg>72°F</li><li>Filtered</li><li>Quiet</li></ul>
+      </div>
+      <div class="ba__layer ba__layer--before">
+        <img data-media="comfortRoom" alt="" loading="lazy" decoding="async">
+        <div class="ba__hot"></div>
+        <ul class="ba__chips ba__chips--before"><li>84°F</li><li>Sticky</li><li>Dusty</li></ul>
+      </div>
+      <div class="ba__handle" aria-hidden="true"><span><svg><use href="#i-left"/></svg><svg><use href="#i-right"/></svg></span></div>
+      <span class="ba__tag ba__tag--before">Before</span>
+      <span class="ba__tag ba__tag--after">After Airwise</span>
+      <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Before and after comparison slider">
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. REVIEWS + STATS (social proof) ============ -->
+<section class="panel reviews" id="reviews" data-section="Reviews">
+  <div class="container">
+    <div class="reviews__head">
+      <div>
+        <p class="eyebrow" data-reveal>Social proof</p>
+        <h2 class="h2" data-split>Neighbors who <span class="cool">stopped sweating it.</span></h2>
+      </div>
+      <div class="reviews__summary" data-reveal>
+        <div class="stars" aria-label="5 out of 5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+        <p><strong data-rating-value>5.0</strong> average on <span data-rating-source>Google</span></p>
+        <div class="reviews__arrows">
+          <button class="icon-btn" data-rev-prev aria-label="Previous review"><svg><use href="#i-left"/></svg></button>
+          <button class="icon-btn" data-rev-next aria-label="Next review"><svg><use href="#i-right"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <div class="reviews__track" id="reviews-track" tabindex="0" aria-label="Customer reviews"></div>
+    <p class="sample-note" id="sample-note" hidden>Sample reviews. Replace them with your real Google reviews in <code>assets/js/config.js</code>.</p>
+    <div class="stats" id="stats"></div>
+  </div>
+</section>
+
+<!-- ============ 8. OFFER (reciprocity + honest urgency) ============ -->
+<section class="panel offer" id="offer" data-section="Offer">
+  <div class="offer__bg" aria-hidden="true">
+    <video data-media="offerVideo" muted loop playsinline preload="none"></video>
+    <div class="offer__tint"></div>
+    <div class="snow"></div>
+  </div>
+  <div class="container offer__grid">
+    <div class="offer__copy">
+      <p class="eyebrow" data-reveal data-offer-eyebrow>Limited-time · Seasonal tune-up</p>
+      <h2 class="h2 h2--xl" data-split data-offer-title>Beat the winter rush.</h2>
+      <p class="lead" data-reveal>The first cold snap fills every HVAC calendar in town. Book now and walk into winter knowing your system is safe, efficient and ready.</p>
+      <div class="countdown" id="countdown" data-reveal aria-live="off">
+        <div><strong data-cd="d">00</strong><span>Days</span></div>
+        <div><strong data-cd="h">00</strong><span>Hours</span></div>
+        <div><strong data-cd="m">00</strong><span>Min</span></div>
+        <div><strong data-cd="s">00</strong><span>Sec</span></div>
+      </div>
+      <p class="offer__deadline" data-reveal>Offer ends <span id="offer-deadline">soon</span></p>
+    </div>
+    <div class="offer__card" data-reveal>
+      <div class="offer__anchor"><span data-anchor-label>Typical emergency no-heat call</span><strong data-anchor-price>$250+</strong></div>
+      <div class="offer__price"><span>Seasonal tune-up</span><strong>$<span data-offer-price>89</span></strong></div>
+      <ul class="offer__includes" id="offer-includes"></ul>
+      <a class="btn btn--primary btn--block btn--lg" href="#quote" data-prefill="Maintenance / tune-up" data-magnetic>Claim my tune-up <svg><use href="#i-arrow"/></svg></a>
+      <p class="offer__fine">No obligation. If we find nothing wrong, you just get peace of mind.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. QUOTE WIZARD (micro-commitments + goal gradient) ============ -->
+<section class="panel quote" id="quote" data-section="Estimate">
+  <div class="container quote__grid">
+    <div class="quote__copy">
+      <p class="eyebrow" data-reveal>Free estimate</p>
+      <h2 class="h2" data-split>Your estimate in <span class="cool">4 quick taps.</span></h2>
+      <p class="lead" data-reveal>No forms from 1998. Tap, tap, tap, done. Prefer talking? We're one call away.</p>
+      <div class="quote__alt" data-reveal>
+        <a href="tel:+19164753948" data-tel><svg><use href="#i-phone"/></svg><span data-phone-display>(916) 475-3948</span></a>
+        <a href="sms:+19164753948" data-sms><svg><use href="#i-chat"/></svg>Text us a photo of your unit</a>
+        <a href="mailto:airwisehvacsolutionsllc@gmail.com" data-mail><svg><use href="#i-mail"/></svg><span data-email-display>airwisehvacsolutionsllc@gmail.com</span></a>
+      </div>
+    </div>
+
+    <form class="wizard" id="wizard" novalidate data-reveal>
+      <div class="wizard__top">
+        <p class="wizard__status" id="wiz-status">Step 1 of 4</p>
+        <p class="wizard__pct"><span id="wiz-pct">0</span>% done</p>
+      </div>
+      <div class="wizard__progress"><span id="wiz-bar"></span></div>
+
+      <fieldset class="wizard__step is-active" data-step="1">
+        <legend>What do you need?</legend>
+        <div class="tiles">
+          <label class="tile"><input type="radio" name="service" value="Installation"><span>New installation</span></label>
+          <label class="tile"><input type="radio" name="service" value="Retrofit / upgrade"><span>Retrofit / upgrade</span></label>
+          <label class="tile"><input type="radio" name="service" value="New construction"><span>New construction</span></label>
+          <label class="tile"><input type="radio" name="service" value="Paint job"><span>Paint job</span></label>
+          <label class="tile"><input type="radio" name="service" value="Maintenance / tune-up"><span>Maintenance / tune-up</span></label>
+          <label class="tile"><input type="radio" name="service" value="Not sure"><span>Not sure, help me</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="wizard__step" data-step="2">
+        <legend>What type of property?</legend>
+        <div class="tiles tiles--2">
+          <label class="tile"><input type="radio" name="property" value="Home"><span>Home</span></label>
+          <label class="tile"><input type="radio" name="property" value="Business"><span>Business</span></label>
+          <label class="tile"><input type="radio" name="property" value="New build / builder"><span>New build / builder</span></label>
+          <label class="tile"><input type="radio" name="property" value="Rental / property mgmt"><span>Rental / property mgmt</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="wizard__step" data-step="3">
+        <legend>When do you need us?</legend>
+        <div class="tiles tiles--2">
+          <label class="tile"><input type="radio" name="timing" value="ASAP (urgent)"><span>ASAP, it's urgent</span></label>
+          <label class="tile"><input type="radio" name="timing" value="This week"><span>This week</span></label>
+          <label class="tile"><input type="radio" name="timing" value="This month"><span>This month</span></label>
+          <label class="tile"><input type="radio" name="timing" value="Just planning"><span>Just planning</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="wizard__step" data-step="4">
+        <legend>Where should we send your estimate?</legend>
+        <div class="fields">
+          <label class="field"><span>Name</span><input name="name" autocomplete="name" required></label>
+          <label class="field"><span>Phone</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" required></label>
+          <label class="field"><span>Email</span><input name="email" type="email" autocomplete="email"></label>
+          <label class="field"><span>ZIP code</span><input name="zip" inputmode="numeric" autocomplete="postal-code" maxlength="10"></label>
+          <label class="field field--full"><span>Anything we should know? (optional)</span><textarea name="notes" rows="2"></textarea></label>
+          <input type="hidden" name="build" id="build-field">
+        </div>
+      </fieldset>
+
+      <div class="wizard__nav">
+        <button type="button" class="btn btn--ghost" data-wiz-back disabled aria-label="Back"><svg><use href="#i-left"/></svg><span class="hide-sm">Back</span></button>
+        <button type="button" class="btn btn--primary" data-wiz-next>Next <svg><use href="#i-arrow"/></svg></button>
+        <button type="submit" class="btn btn--primary" data-wiz-submit hidden>Send my estimate <svg><use href="#i-arrow"/></svg></button>
+      </div>
+      <p class="wizard__assure"><svg><use href="#i-shield"/></svg>No spam, no pressure. Your info goes only to Airwise.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ 10. FAQ + CONTACT + FOOTER ============ -->
+<section class="panel contact" id="contact" data-section="FAQ">
+  <div class="container contact__grid">
+    <div class="faq">
+      <p class="eyebrow" data-reveal>FAQ</p>
+      <h2 class="h2" data-split>Questions? <span class="cool">Answered.</span></h2>
+      <div class="faq__list" data-reveal>
+        <details name="faq" open><summary>How much does a new system cost?</summary><p>It depends on your home's size, ductwork and the efficiency you want. That's why the on-site assessment is free and you get good / better / best options in writing before any work starts.</p></details>
+        <details name="faq"><summary>How long does an installation take?</summary><p>Most residential change-outs take a single day. Bigger retrofits or ductwork changes can take 2–3 days. We'll give you a firm schedule up front.</p></details>
+        <details name="faq"><summary>Why does an HVAC company do paint jobs?</summary><p>Because our customers asked. We already work on your home's exterior, equipment and ducts. Painting walls, trim, equipment and protective coatings with the same trusted crew means one schedule and one invoice.</p></details>
+        <details name="faq"><summary>Do you work with builders and contractors?</summary><p>Yes. We handle load calcs, duct design, rough-in and final for new construction, and we build our schedule around yours.</p></details>
+        <details name="faq"><summary>How often should my system be serviced?</summary><p>Twice a year is the industry rule of thumb: cooling in spring and heating in fall. Regular tune-ups catch failing parts early and keep efficiency up.</p></details>
+      </div>
+    </div>
+    <aside class="contact-card" data-reveal>
+      <div class="contact-card__brand"><svg><use href="#i-logo"/></svg><div><strong>Talk to a real human</strong><span class="open-line" data-open-line>We reply fast</span></div></div>
+      <a class="contact-card__row" href="tel:+19164753948" data-tel><svg><use href="#i-phone"/></svg><span data-phone-display>(916) 475-3948</span></a>
+      <a class="contact-card__row" href="mailto:airwisehvacsolutionsllc@gmail.com" data-mail><svg><use href="#i-mail"/></svg><span data-email-display>airwisehvacsolutionsllc@gmail.com</span></a>
+      <p class="contact-card__row"><svg><use href="#i-pin"/></svg><span data-area>Greater Sacramento</span></p>
+      <p class="contact-card__row"><svg><use href="#i-clock"/></svg><span data-hours>Mon–Fri 7am–7pm · Sat 8am–4pm</span></p>
+      <div class="contact-card__ctas">
+        <a class="btn btn--primary btn--block" href="#quote">Get my free estimate</a>
+        <a class="btn btn--ghost btn--block" href="vr-showroom.html"><svg><use href="#i-vr"/></svg>Visit our VR showroom</a>
+      </div>
+    </aside>
+  </div>
+  <footer class="footer container">
+    <p>© <span id="year">2026</span> <span data-legal>Airwise HVAC Solutions LLC</span>. All rights reserved.</p>
+    <p class="footer__links"><a href="#top">Back to top</a><button type="button" data-open-modal="modal-credits">Photo &amp; video credits</button><a href="https://www.pexels.com" target="_blank" rel="noopener">Media by Pexels</a></p>
+  </footer>
+</section>
+
+</main>
+
+<!-- ============ MOBILE ACTION BAR ============ -->
+<nav class="action-bar" id="action-bar" aria-label="Quick actions">
+  <a href="tel:+19164753948" data-tel><svg><use href="#i-phone"/></svg>Call</a>
+  <a href="sms:+19164753948" data-sms><svg><use href="#i-chat"/></svg>Text</a>
+  <a href="#quote" class="is-primary">Free estimate<svg><use href="#i-arrow"/></svg></a>
+</nav>
+
+<!-- ============ MODALS / POP-UPS ============ -->
+<div class="modal" data-lenis-prevent id="modal-svc" role="dialog" aria-modal="true" aria-labelledby="svc-title" hidden>
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__panel modal__panel--svc">
+    <button class="modal__close" data-close aria-label="Close"><svg><use href="#i-close"/></svg></button>
+    <div class="svc-modal__media" id="svc-media"></div>
+    <div class="svc-modal__body">
+      <p class="eyebrow" id="svc-eyebrow">Service</p>
+      <h3 class="svc-modal__title" id="svc-title">Service</h3>
+      <p class="svc-modal__lead" id="svc-lead"></p>
+      <div class="svc-modal__cols">
+        <div><h4>What's included</h4><ul class="checklist" id="svc-list"></ul></div>
+        <div><h4>Perfect if…</h4><p id="svc-ideal"></p><h4>Typical timeline</h4><p id="svc-time"></p></div>
+      </div>
+      <div class="svc-modal__ctas">
+        <a class="btn btn--primary" href="#quote" id="svc-cta">Get a quote <svg><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--ghost" href="tel:+19164753948" data-tel><svg><use href="#i-phone"/></svg>Call now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" data-lenis-prevent id="modal-exit" role="dialog" aria-modal="true" aria-labelledby="exit-title" hidden>
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__panel modal__panel--exit">
+    <button class="modal__close" data-close aria-label="Close"><svg><use href="#i-close"/></svg></button>
+    <div class="exit__icon"><svg><use href="#i-snow"/></svg></div>
+    <p class="eyebrow">Before you go</p>
+    <h3 id="exit-title">Get a <span class="cool">free 21-point check</span> with any service this month.</h3>
+    <p>Most breakdowns give warning signs weeks ahead. We'll find them before they find you, on the house.</p>
+    <div class="exit__ctas">
+      <a class="btn btn--primary btn--block" href="#quote" data-prefill="Maintenance / tune-up" data-close>Claim my free check <svg><use href="#i-arrow"/></svg></a>
+      <button class="btn btn--text" data-close>Maybe later</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" data-lenis-prevent id="modal-config" role="dialog" aria-modal="true" aria-labelledby="cfg-title" hidden>
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__panel modal__panel--config">
+    <button class="modal__close" data-close aria-label="Close"><svg><use href="#i-close"/></svg></button>
+    <div class="cfg__stage">
+      <canvas id="cfg-canvas" aria-label="3D preview of your HVAC unit"></canvas>
+      <div class="cfg__loading" id="cfg-loading"><span class="spinner"></span>Loading 3D studio (Babylon.js)…</div>
+      <p class="cfg__tip">Drag to rotate · Pinch / scroll to zoom</p>
+    </div>
+    <div class="cfg__panel">
+      <p class="eyebrow">3D studio · Babylon.js</p>
+      <h3 id="cfg-title">Design your unit</h3>
+      <div class="cfg__group">
+        <p class="cfg__label">Capacity <output id="cfg-size-out">3.0 ton</output></p>
+        <input type="range" id="cfg-size" min="1.5" max="5" step="0.5" value="3">
+        <p class="cfg__hint" id="cfg-size-hint">Typical for ~1,500–1,800 sq ft</p>
+      </div>
+      <div class="cfg__group">
+        <p class="cfg__label">Finish color <span class="cfg__paint-tag">Paint Jobs</span></p>
+        <div class="swatches" id="cfg-swatches" role="radiogroup" aria-label="Finish color">
+          <button class="swatch is-active" role="radio" aria-checked="true" data-color="#E8EDF2" data-name="Arctic White" style="--c:#E8EDF2" aria-label="Arctic White"></button>
+          <button class="swatch" role="radio" aria-checked="false" data-color="#3A4250" data-name="Graphite" style="--c:#3A4250" aria-label="Graphite"></button>
+          <button class="swatch" role="radio" aria-checked="false" data-color="#C9B48F" data-name="Desert Sand" style="--c:#C9B48F" aria-label="Desert Sand"></button>
+          <button class="swatch" role="radio" aria-checked="false" data-color="#7E9579" data-name="Sage" style="--c:#7E9579" aria-label="Sage"></button>
+          <button class="swatch" role="radio" aria-checked="false" data-color="#2F7BFF" data-name="Airwise Blue" style="--c:#2F7BFF" aria-label="Airwise Blue"></button>
+          <label class="swatch swatch--custom" aria-label="Custom color"><input type="color" id="cfg-custom" value="#9b6bff"></label>
+        </div>
+        <p class="cfg__hint">Color-matched to your home by our paint crew.</p>
+      </div>
+      <div class="cfg__group">
+        <p class="cfg__label">Mounting</p>
+        <div class="seg" id="cfg-pad">
+          <button class="is-active" data-pad="concrete">Concrete pad</button>
+          <button data-pad="composite">Composite pad</button>
+          <button data-pad="wall">Wall bracket</button>
+        </div>
+      </div>
+      <div class="cfg__summary" id="cfg-summary">3.0 ton · Arctic White · Concrete pad</div>
+      <button class="btn btn--primary btn--block" id="cfg-send">Get a quote for this build <svg><use href="#i-arrow"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" data-lenis-prevent id="modal-success" role="dialog" aria-modal="true" aria-labelledby="ok-title" hidden>
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__panel modal__panel--exit">
+    <button class="modal__close" data-close aria-label="Close"><svg><use href="#i-close"/></svg></button>
+    <div class="exit__icon exit__icon--ok"><svg><use href="#i-check"/></svg></div>
+    <h3 id="ok-title">You're all set, <span id="ok-name">friend</span>.</h3>
+    <p id="ok-msg">Your request is on its way. A real Airwise human will reach out shortly with next steps.</p>
+    <p class="ok-small">Need us sooner? Call <a href="tel:+19164753948" data-tel><span data-phone-display>(916) 475-3948</span></a></p>
+    <button class="btn btn--primary btn--block" data-close>Back to the site</button>
+  </div>
+</div>
+
+<div class="modal" data-lenis-prevent id="modal-credits" role="dialog" aria-modal="true" aria-labelledby="credits-title" hidden>
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__panel modal__panel--exit">
+    <button class="modal__close" data-close aria-label="Close"><svg><use href="#i-close"/></svg></button>
+    <h3 id="credits-title">Photo &amp; video credits</h3>
+    <p>Photos and videos provided by <a href="https://www.pexels.com" target="_blank" rel="noopener">Pexels</a>.</p>
+    <ul class="credits" id="credits-list"><li>Loading credits…</li></ul>
+  </div>
+</div>
+
+<!-- ============ THEME SWITCHER (floating) ============ -->
+<div class="theme-switch" id="theme-switch">
+  <div class="theme-menu" id="theme-menu" role="menu" aria-label="Color themes">
+    <p class="theme-menu__title"><span>Color theme</span><span id="theme-current">Arctic Night</span></p>
+    <button class="theme-opt" role="menuitemradio" aria-checked="true" data-theme-set="night" style="--a:#050A14;--b:#5CE1FF;--c:#FF7A45;--t:#EAF3FF;--f:'Sora',sans-serif">
+      <span class="theme-opt__sw" aria-hidden="true"></span>
+      <span class="theme-opt__txt"><strong>Arctic Night</strong><small>Deep navy · ice blue · ember</small></span>
+      <span class="theme-opt__check" aria-hidden="true"><svg><use href="#i-check"/></svg></span>
+    </button>
+    <button class="theme-opt" role="menuitemradio" aria-checked="false" data-theme-set="breeze" style="--a:#F5F9FF;--b:#0A7CFF;--c:#FF5A36;--t:#0B1B33;--f:'Sora',sans-serif">
+      <span class="theme-opt__sw" aria-hidden="true"></span>
+      <span class="theme-opt__txt"><strong>Summer Breeze</strong><small>Bright · sky blue · coral · sunshine</small></span>
+      <span class="theme-opt__check" aria-hidden="true"><svg><use href="#i-check"/></svg></span>
+    </button>
+    <button class="theme-opt" role="menuitemradio" aria-checked="false" data-theme-set="gold" style="--a:#0A0908;--b:#E3C27D;--c:#C23B52;--t:#F6E3B4;--f:'Playfair Display',Georgia,serif">
+      <span class="theme-opt__sw" aria-hidden="true"></span>
+      <span class="theme-opt__txt"><strong>Obsidian Gold</strong><small>Premium · black · champagne gold</small></span>
+      <span class="theme-opt__check" aria-hidden="true"><svg><use href="#i-check"/></svg></span>
+    </button>
+  </div>
+  <button class="theme-fab" id="theme-fab" aria-haspopup="menu" aria-expanded="false" aria-controls="theme-menu" aria-label="Change color theme">
+    <span class="theme-fab__orb" aria-hidden="true"></span>
+    <span class="theme-fab__tip" aria-hidden="true">Themes</span>
+  </button>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- ============ SCRIPTS ============ -->
+<!-- GSAP + ScrollTrigger + Lenis (classic builds, work from file:// too) -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<!-- Site -->
+<script src="assets/js/config.js"></script>
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/media-slots.js"></script>
+<script src="assets/media/media-local.js"></script>
+<script src="assets/js/media.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/scene3d.js"></script>
+<script src="assets/js/configurator.js"></script>
+</body>
+</html>

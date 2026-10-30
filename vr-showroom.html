@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en" data-theme="night">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VR Showroom | Airwise HVAC Solutions</title>
+<meta name="description" content="Walk around an Airwise high-efficiency condenser in WebXR. Works on phones, desktops and VR headsets.">
+<meta name="theme-color" content="#050A14">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Sora:wght@700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<script>
+  /* same color theme as the main site (Arctic Night / Summer Breeze / Obsidian Gold) */
+  (function () {
+    var ok = { night: 1, breeze: 1, gold: 1 }, t = null;
+    try { var q = new URLSearchParams(location.search).get('theme'); if (q && ok[q]) t = q; } catch (e) {}
+    if (!t) { try { t = localStorage.getItem('airwise-theme'); } catch (e) {} }
+    document.documentElement.setAttribute('data-theme', ok[t] ? t : 'night');
+  })();
+</script>
+<script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+<style>
+  :root, [data-theme="night"] { --bg: #050A14; --bg-rgb: 5 10 20; --glass: rgba(8,17,31,.82); --ink: rgba(255,255,255,.07); --text: #EAF3FF; --muted: #9AABC6; --cool: #5CE1FF; --line: rgba(150,190,255,.22); --grad: linear-gradient(135deg, #7BEAFF, #5CE1FF 35%, #2F7BFF); --on-accent: #021023; --display: Sora, sans-serif; }
+  [data-theme="breeze"] { --bg: #F5F9FF; --bg-rgb: 245 249 255; --glass: rgba(255,255,255,.86); --ink: rgba(12,32,64,.06); --text: #0B1B33; --muted: #4F6282; --cool: #0A7CFF; --line: rgba(30,84,170,.2); --grad: linear-gradient(135deg, #00D2FF, #0A7CFF 45%, #6A3DFF); --on-accent: #FFFFFF; --display: Sora, sans-serif; }
+  [data-theme="gold"] { --bg: #0A0908; --bg-rgb: 10 9 8; --glass: rgba(23,20,15,.85); --ink: rgba(255,244,222,.07); --text: #F6F0E6; --muted: #B2A691; --cool: #E3C27D; --line: rgba(227,194,125,.24); --grad: linear-gradient(135deg, #FBEBC3, #E3C27D 42%, #A97B35); --on-accent: #1A1206; --display: 'Playfair Display', Georgia, serif; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); font: 400 15px/1.5 Inter, system-ui, sans-serif; overflow: hidden; }
+  a { color: inherit; text-decoration: none; }
+  .ui { position: fixed; z-index: 10; pointer-events: none; }
+  .ui > * { pointer-events: auto; }
+  .top { top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 14px 16px; padding-top: max(14px, env(safe-area-inset-top)); background: linear-gradient(180deg, rgb(var(--bg-rgb) / .85), transparent); }
+  .back { display: inline-flex; align-items: center; gap: 8px; height: 42px; padding: 0 16px; border-radius: 999px; background: var(--ink); border: 1px solid var(--line); font-weight: 600; font-size: 14px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+  .title { font: 800 16px/1.1 var(--display); letter-spacing: -.01em; text-align: center; }
+  .title small { display: block; font: 600 10px/1.4 Inter, sans-serif; letter-spacing: .2em; text-transform: uppercase; color: var(--cool); }
+  .cta { display: inline-flex; align-items: center; height: 42px; padding: 0 18px; border-radius: 999px; background: var(--grad); color: var(--on-accent); font-weight: 700; font-size: 14px; white-space: nowrap; }
+  .info { left: 16px; right: 16px; bottom: max(18px, env(safe-area-inset-bottom)); max-width: 440px; padding: 16px 18px; border-radius: 20px; background: var(--glass); border: 1px solid var(--line); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); transition: transform .5s cubic-bezier(.16,1,.3,1), opacity .4s; }
+  .info h2 { margin: 0 0 4px; font: 700 18px/1.25 var(--display); }
+  .info p { margin: 0; color: var(--muted); font-size: 14px; }
+  .info .hint { margin-top: 10px; font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--cool); }
+  .info.pop { transform: translateY(-6px); }
+  @media (max-width: 560px) { .title { display: none; } .cta { padding: 0 14px; } }
+  .a-enter-vr { right: 20px !important; bottom: 20px !important; }
+  @media (max-width: 560px) { .a-enter-vr { bottom: auto !important; top: 70px !important; } }
+</style>
+<script>
+  /* ---- Custom A-Frame components ---- */
+  AFRAME.registerComponent('louvers', {
+    schema: { width: { default: 2 }, height: { default: 1.6 }, count: { default: 14 }, color: { default: '#4a5668' } },
+    init: function () {
+      var THREE = AFRAME.THREE, d = this.data;
+      var geo = new THREE.BoxGeometry(d.width - 0.14, 0.04, 0.05);
+      var mat = new THREE.MeshStandardMaterial({ color: d.color, metalness: 0.6, roughness: 0.45 });
+      var mesh = new THREE.InstancedMesh(geo, mat, d.count * 4);
+      var dummy = new THREE.Object3D(), n = 0;
+      for (var k = 0; k < 4; k++) {
+        var a = k * Math.PI / 2;
+        for (var j = 0; j < d.count; j++) {
+          var y = 0.2 + j * ((d.height - 0.26) / (d.count - 1));
+          dummy.position.set(Math.sin(a) * (d.width / 2 + 0.01), y, Math.cos(a) * (d.width / 2 + 0.01));
+          dummy.rotation.set(0, a, 0); dummy.rotateX(-0.6);
+          dummy.updateMatrix(); mesh.setMatrixAt(n++, dummy.matrix);
+        }
+      }
+      mesh.instanceMatrix.needsUpdate = true;
+      this.el.setObject3D('mesh', mesh);
+    },
+    remove: function () { this.el.removeObject3D('mesh'); }
+  });
+
+  AFRAME.registerComponent('airflow', {
+    schema: { count: { default: 160 }, radius: { default: 0.75 }, height: { default: 1.9 }, color: { default: '#5CE1FF' } },
+    init: function () {
+      var THREE = AFRAME.THREE, d = this.data;
+      var c = document.createElement('canvas'); c.width = c.height = 64;
+      var g = c.getContext('2d'), grd = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+      grd.addColorStop(0, 'rgba(255,255,255,1)'); grd.addColorStop(0.5, 'rgba(255,255,255,.25)'); grd.addColorStop(1, 'rgba(255,255,255,0)');
+      g.fillStyle = grd; g.fillRect(0, 0, 64, 64);
+      this.pos = new Float32Array(d.count * 3);
+      for (var i = 0; i < d.count; i++) {
+        var r = Math.sqrt(Math.random()) * d.radius, a = Math.random() * Math.PI * 2;
+        this.pos[i * 3] = Math.cos(a) * r; this.pos[i * 3 + 1] = Math.random() * d.height; this.pos[i * 3 + 2] = Math.sin(a) * r;
+      }
+      this.geo = new THREE.BufferGeometry();
+      this.geo.setAttribute('position', new THREE.BufferAttribute(this.pos, 3));
+      var mat = new THREE.PointsMaterial({ size: 0.06, map: new THREE.CanvasTexture(c), color: d.color, transparent: true, opacity: 0.7, depthWrite: false, blending: THREE.AdditiveBlending });
+      this.points = new THREE.Points(this.geo, mat);
+      this.points.frustumCulled = false;
+      this.el.setObject3D('mesh', this.points);
+    },
+    tick: function (t, dt) {
+      if (!this.geo) return;
+      var s = Math.min(dt || 16, 50) / 1000, d = this.data;
+      for (var i = 0; i < d.count; i++) {
+        var y = this.pos[i * 3 + 1] + s * (0.8 + (i % 7) * 0.12);
+        this.pos[i * 3 + 1] = y > d.height ? 0 : y;
+      }
+      this.geo.attributes.position.needsUpdate = true;
+      this.points.rotation.y += s * 1.2;
+    }
+  });
+
+  AFRAME.registerComponent('grid-floor', {
+    init: function () {
+      var THREE = AFRAME.THREE;
+      var th = document.documentElement.getAttribute('data-theme');
+      var gc = { night: [0x1d3a66, 0x0f1f3a], breeze: [0x9fc3ee, 0xc9dcf3], gold: [0x4a3c22, 0x241e15] }[th] || [0x1d3a66, 0x0f1f3a];
+      var grid = new THREE.GridHelper(28, 56, gc[0], gc[1]);
+      grid.material.transparent = true; grid.material.opacity = 0.55;
+      this.el.setObject3D('mesh', grid);
+    }
+  });
+
+  AFRAME.registerComponent('hotspot', {
+    schema: { title: { type: 'string' }, body: { type: 'string' } },
+    init: function () {
+      var el = this.el, data = this.data;
+      el.classList.add('clickable');
+      el.addEventListener('click', function () {
+        var box = document.getElementById('info');
+        document.getElementById('info-title').textContent = data.title;
+        document.getElementById('info-body').textContent = data.body;
+        box.classList.add('pop'); setTimeout(function () { box.classList.remove('pop'); }, 300);
+        var vrText = document.getElementById('vr-text');
+        if (vrText) vrText.setAttribute('value', data.title + '\n\n' + data.body);
+      });
+      el.addEventListener('mouseenter', function () { el.setAttribute('scale', '1.5 1.5 1.5'); });
+      el.addEventListener('mouseleave', function () { el.setAttribute('scale', '1 1 1'); });
+    }
+  });
+</script>
+</head>
+<body>
+  <div class="ui top">
+    <a class="back" href="index.html">← Back to site</a>
+    <div class="title"><small>A-Frame · WebXR</small>Airwise VR Showroom</div>
+    <a class="cta" href="index.html#quote">Free estimate</a>
+  </div>
+  <div class="ui info" id="info">
+    <h2 id="info-title">Welcome to the showroom</h2>
+    <p id="info-body">This is a high-efficiency condenser, just like the ones we install. Tap the glowing dots to explore each part, drag to look around, or put on a headset with the VR button.</p>
+    <p class="hint">Tap glowing dots · Drag to look · WASD to walk</p>
+  </div>
+
+  <a-scene renderer="antialias: true; colorManagement: true" vr-mode-ui="enabled: true"
+           loading-screen="dotsColor: #5CE1FF; backgroundColor: #050A14"
+           background="color: #050A14" fog="type: exponential; color: #050A14; density: 0.05">
+
+    <!-- floor -->
+    <a-circle class="th-floor" radius="16" rotation="-90 0 0" color="#0A1426" material="roughness: 1; metalness: 0"></a-circle>
+    <a-entity grid-floor position="0 0.005 0"></a-entity>
+    <a-ring class="th-accent" radius-inner="2.3" radius-outer="2.36" rotation="-90 0 0" position="0 0.012 0" material="color: #5CE1FF; shader: flat; transparent: true; opacity: 0.7"
+            animation="property: scale; to: 1.06 1.06 1.06; dir: alternate; loop: true; dur: 1800; easing: easeInOutSine"></a-ring>
+
+    <!-- backdrop text -->
+    <a-text class="th-accent-text" value="AIRWISE" align="center" position="0 3.6 -5" width="14" color="#5CE1FF" opacity="0.9"></a-text>
+    <a-text class="th-muted-text" value="HVAC SOLUTIONS  ·  INSTALLS  ·  RETROFITS  ·  NEW CONSTRUCTION  ·  PAINT  ·  MAINTENANCE" align="center" position="0 3.05 -5" width="7" color="#9AABC6"></a-text>
+
+    <!-- condenser unit -->
+    <a-entity id="unit" position="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 60000; easing: linear">
+      <a-box width="2.6" height="0.12" depth="2.6" position="0 0.06 0" color="#323a48" material="roughness: .95"></a-box>
+      <a-box width="2.08" height="0.08" depth="2.08" position="0 0.16 0" color="#151b25"></a-box>
+      <a-box width="1.86" height="1.5" depth="1.86" position="0 0.98 0" color="#1b2430" material="metalness: .6; roughness: .4"></a-box>
+      <a-entity louvers="width: 2; height: 1.8; count: 15" position="0 0 0"></a-entity>
+      <a-box width="0.1" height="1.6" depth="0.1" position="0.98 1 0.98" color="#d3dbe4" material="metalness: .7; roughness: .3"></a-box>
+      <a-box width="0.1" height="1.6" depth="0.1" position="-0.98 1 0.98" color="#d3dbe4" material="metalness: .7; roughness: .3"></a-box>
+      <a-box width="0.1" height="1.6" depth="0.1" position="0.98 1 -0.98" color="#d3dbe4" material="metalness: .7; roughness: .3"></a-box>
+      <a-box width="0.1" height="1.6" depth="0.1" position="-0.98 1 -0.98" color="#d3dbe4" material="metalness: .7; roughness: .3"></a-box>
+      <a-box width="2.08" height="0.07" depth="2.08" position="0 1.84 0" color="#d3dbe4" material="metalness: .7; roughness: .3"></a-box>
+      <a-torus radius="0.3" radius-tubular="0.012" rotation="90 0 0" position="0 1.9 0" color="#151b25"></a-torus>
+      <a-torus radius="0.5" radius-tubular="0.012" rotation="90 0 0" position="0 1.9 0" color="#151b25"></a-torus>
+      <a-torus radius="0.7" radius-tubular="0.012" rotation="90 0 0" position="0 1.9 0" color="#151b25"></a-torus>
+      <a-torus radius="0.86" radius-tubular="0.014" rotation="90 0 0" position="0 1.9 0" color="#151b25"></a-torus>
+      <a-cylinder class="th-accent-color" radius="0.12" height="0.06" position="0 1.9 0" color="#5CE1FF" material="shader: flat"></a-cylinder>
+      <a-entity position="0 1.78 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 700; easing: linear">
+        <a-box width="1.5" height="0.02" depth="0.22" rotation="12 0 0" color="#232b38"></a-box>
+        <a-box width="1.5" height="0.02" depth="0.22" rotation="12 90 0" color="#232b38"></a-box>
+      </a-entity>
+      <a-cylinder radius="0.05" height="0.16" rotation="0 0 90" position="1.06 0.5 0.8" color="#c87a42" material="metalness: 1; roughness: .3"></a-cylinder>
+      <a-cylinder radius="0.04" height="0.16" rotation="0 0 90" position="1.06 0.68 0.8" color="#c87a42" material="metalness: 1; roughness: .3"></a-cylinder>
+      <a-plane width="0.72" height="0.2" position="0 1.5 1.08" color="#0b1424"></a-plane>
+      <a-text value="AIRWISE" align="center" position="0 1.5 1.085" width="2.4" color="#FFFFFF"></a-text>
+      <a-entity airflow position="0 1.95 0"></a-entity>
+
+      <!-- hotspots -->
+      <a-sphere class="th-accent" radius="0.09" position="0 2.15 0" material="color: #5CE1FF; shader: flat"
+                hotspot="title: Whisper-quiet fan; body: Balanced blades and a matched motor move more air with less noise and less power."
+                animation="property: material.opacity; from: 1; to: 0.5; dir: alternate; loop: true; dur: 900"></a-sphere>
+      <a-sphere class="th-accent" radius="0.09" position="0 1.0 1.12" material="color: #5CE1FF; shader: flat"
+                hotspot="title: High-efficiency coil; body: Clean, straight aluminum fins and copper tubing shed heat fast so your system runs shorter, cheaper cycles."></a-sphere>
+      <a-sphere class="th-accent" radius="0.09" position="-1.12 0.6 0" material="color: #5CE1FF; shader: flat"
+                hotspot="title: Right-sized compressor; body: A room-by-room load calculation means you never pay for a unit that is too big or too small."></a-sphere>
+      <a-sphere radius="0.09" position="1.18 0.6 0.8" material="color: #FF7A45; shader: flat"
+                hotspot="title: Sealed & commissioned; body: Every line is pressure-tested, vacuumed and charged to spec before we leave, with documentation."></a-sphere>
+    </a-entity>
+
+    <!-- VR info board -->
+    <a-entity position="2.9 1.6 -0.6" rotation="0 -35 0">
+      <a-plane class="th-board" width="2.2" height="1.3" color="#0B1630" material="opacity: 0.88; transparent: true"></a-plane>
+      <a-text class="th-text" id="vr-text" value="Point at a glowing dot to learn about each part." position="-0.98 0 0.01" width="1.95" color="#EAF3FF" wrap-count="34"></a-text>
+    </a-entity>
+
+    <!-- lights -->
+    <a-entity light="type: ambient; intensity: 0.55; color: #BCD7FF"></a-entity>
+    <a-entity light="type: directional; intensity: 1.7; color: #FFFFFF" position="3 6 4"></a-entity>
+    <a-entity light="type: point; intensity: 2.4; distance: 12; color: #5CE1FF" position="-2.5 2.5 1.5"></a-entity>
+    <a-entity light="type: point; intensity: 1.6; distance: 10; color: #FF7A45" position="2.5 1.2 -2"></a-entity>
+
+    <!-- camera rig: gaze cursor for headsets + mouse/touch cursor for screens -->
+    <a-entity id="rig" position="0 0 4.2">
+      <a-entity camera look-controls="pointerLockEnabled: false" wasd-controls="acceleration: 22" position="0 1.6 0">
+        <a-entity class="th-accent" cursor="fuse: true; fuseTimeout: 1300" raycaster="objects: .clickable; far: 20" position="0 0 -1"
+                  geometry="primitive: ring; radiusInner: 0.012; radiusOuter: 0.02" material="color: #5CE1FF; shader: flat"
+                  animation__fusing="property: scale; startEvents: fusing; from: 1 1 1; to: 0.3 0.3 0.3; dur: 1300"
+                  animation__leave="property: scale; startEvents: mouseleave; to: 1 1 1; dur: 200"></a-entity>
+      </a-entity>
+    </a-entity>
+    <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable; far: 30"></a-entity>
+  </a-scene>
+  <script>
+    /* tint the 3D scene to match the active color theme */
+    (function () {
+      var th = document.documentElement.getAttribute('data-theme');
+      var P = {
+        night:  { bg: '#050A14', floor: '#0A1426', accent: '#5CE1FF', muted: '#9AABC6', board: '#0B1630', text: '#EAF3FF' },
+        breeze: { bg: '#EAF4FF', floor: '#DCEAF8', accent: '#0A7CFF', muted: '#4F6282', board: '#FFFFFF', text: '#0B1B33' },
+        gold:   { bg: '#0A0908', floor: '#15120E', accent: '#E3C27D', muted: '#B2A691', board: '#17140F', text: '#F6F0E6' }
+      }[th] || null;
+      if (!P || th === 'night') return;
+      var scene = document.querySelector('a-scene');
+      scene.setAttribute('background', 'color', P.bg);
+      scene.setAttribute('fog', 'color', P.bg);
+      var all = function (sel, fn) { Array.prototype.forEach.call(document.querySelectorAll(sel), fn); };
+      all('.th-floor', function (el) { el.setAttribute('color', P.floor); });
+      all('.th-accent', function (el) { el.setAttribute('material', 'color', P.accent); });
+      all('.th-accent-color', function (el) { el.setAttribute('color', P.accent); });
+      all('.th-accent-text', function (el) { el.setAttribute('color', P.accent); });
+      all('.th-muted-text', function (el) { el.setAttribute('color', P.muted); });
+      all('.th-board', function (el) { el.setAttribute('color', P.board); });
+      all('.th-text', function (el) { el.setAttribute('color', P.text); });
+    })();
+  </script>
+</body>
+</html>
