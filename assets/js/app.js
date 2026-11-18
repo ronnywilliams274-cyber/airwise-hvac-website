@@ -528,11 +528,22 @@
       var mm = gsap.matchMedia();
       mm.add('(min-width: 1024px)', function () {
         var dist = function () { return Math.max(0, track.scrollWidth - viewport.clientWidth); };
-        var tween = gsap.to(track, {
-          x: function () { return -dist(); }, ease: 'none',
-          scrollTrigger: { trigger: sec, start: 'top top', end: function () { return '+=' + dist(); }, pin: true, scrub: 0.8, invalidateOnRefresh: true, anticipatePin: 1 }
+        // Pad the pinned section with extra scroll distance so the cards
+        // sit fully visible (with breathing room below) before they begin
+        // sliding horizontally.
+        var settle = window.innerHeight * 0.35;
+        var tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sec,
+            start: 'top top',
+            end: function () { return '+=' + (dist() + settle); },
+            pin: true, scrub: 0.8, invalidateOnRefresh: true, anticipatePin: 1
+          }
         });
-        svcST = tween.scrollTrigger;
+        // Dead-zone: cards stay still for the first portion of the scroll
+        tl.to(track, { x: 0, duration: settle, ease: 'none' })
+          .to(track, { x: function () { return -dist(); }, duration: function () { return dist(); }, ease: 'none' });
+        svcST = tl.scrollTrigger;
         return function () { svcST = null; gsap.set(track, { clearProps: 'transform' }); };
       });
     }
@@ -542,7 +553,9 @@
       if (svcST) {
         var cur = -(+gsap.getProperty(track, 'x') || 0), total = Math.max(1, track.scrollWidth - viewport.clientWidth);
         var next = clamp(cur + dir * step(), 0, total);
-        scrollToY(svcST.start + (next / total) * (svcST.end - svcST.start));
+        // Account for the settle dead-zone at the start of the pinned scroll
+        var settleRange = svcST.end - svcST.start - total;
+        scrollToY(svcST.start + settleRange + (next / total) * total);
       } else viewport.scrollBy({ left: dir * step(), behavior: 'smooth' });
     }
     $$('[data-svc-prev]').forEach(function (b) { b.addEventListener('click', function () { move(-1); }); });

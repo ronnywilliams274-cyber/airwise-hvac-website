@@ -584,6 +584,7 @@ input[type=range]::-moz-range-thumb { width: 26px; height: 26px; border-radius: 
 .services__dots i.is-active { width: 24px; background: var(--cool); }
 @media (min-width: 1024px) and (max-width: 1199px) { .services__hint { display: none; } }
 @media (min-width: 1024px) {
+  .services { padding-bottom: 4vh; }
   .services__head { margin-bottom: 3.4vh; }
   .services__head .h2 { max-width: 22ch; }
   .services__nav { display: flex; }
